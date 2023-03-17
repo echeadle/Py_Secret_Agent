@@ -131,4 +131,7 @@ dmypy.json
 # My Additions
 Code/
 GUTINDEX*
-
+code2/
+*.jpg
+*.png
+*.tiff

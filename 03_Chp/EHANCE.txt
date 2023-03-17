@@ -1,0 +1,32 @@
+"""
+Manipulating images
+Page: 102
+
+Code used in book. Idea? Create an automated script for manipulating images.
+"""
+
+>>> img= Image.open("logo.jpg")
+>>> e=ImageEnhance.Contrast(img)
+>>> e.enhance(2.0).show()
+>>> e.enhance(4.0).show()
+>>> e.enhance(8.0).show()
+>>> from PIL import ImageFilter
+>>> e.filter( ImageFilter.EDGE_ENHANCE).show()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Contrast' object has no attribute 'filter'
+>>> img.filter( ImageFilter.EDGE_ENHANCE).show()
+>>> e.enhance(8.0).filter(ImageFilter.EDGE_ENHANCE).save("LHD_Number2.jpg")
+>>> p1= e.enhance(8.0).filter( ImageFilter.ModeFilter(8) )
+>>> p1.filter( ImageFilter.EDGE_ENHANCE ).show()
+>>> from PIL import ImageOps
+>>> ImageOps.autocontrast( image ).show()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'image' is not defined. Did you mean: 'Image'?
+>>> ImageOps.autocontrast( img ).show()
+>>> img.show()
+>>> ac= ImageEnhance.Contrast( ImageOps.autocontrast( logo ) )
+>>> ac.enhance( 2.5 ).save( "LHD_Number_3.jpg" )
+>>> ac.enhance( 2.5 ).show()
+
